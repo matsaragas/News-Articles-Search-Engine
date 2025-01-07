@@ -2,6 +2,8 @@ import os
 import pandas as pd
 from pathlib import Path
 import json
+import urllib.request
+import zipfile
 
 
 class DataLoader:
@@ -79,6 +81,14 @@ class DataLoader:
         huffing_data_df = self.filtered_news_articles(news)
         self.data = pd.concat([self.data, huffing_data_df], ignore_index=True, sort=False)
         self.data['file_index'] = self.data.index
+
+    @staticmethod
+    def download_news_articles(self):
+        url = "http://mlg.ucd.ie/files/datasets/bbc-fulltext.zip"
+        extract_dir = "data"
+        zip_path, _ = urllib.request.urlretrieve(url)
+        with zipfile.ZipFile(zip_path, "r") as f:
+            f.extractall(extract_dir)
 
 
 
