@@ -13,7 +13,7 @@ class ElasticSearchRetrieval:
         self.host = host
         self.port = port
         self.scheme = scheme
-        self.client = Elasticsearch([{'host': self.host, 'port':9200, "scheme": "http"}],
+        self.client = Elasticsearch([{'host': self.host, 'port': 9200, "scheme": "http"}],
                                     use_ssl=False)
         print("Client Information = \n", self.client.info())
 

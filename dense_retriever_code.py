@@ -1,5 +1,5 @@
 import pandas as pd
-from datasets import Dataset
+from datasets import Dataset, load_from_disk
 
 
 class TransformerSearchRetrieval:
@@ -9,6 +9,7 @@ class TransformerSearchRetrieval:
         self.data = data
         self.save_embeddings = save_embeddings
         self.data_with_embeddings = None
+        self.loaded_embeddings = None
 
     def generate_embedding(self):
         """
@@ -21,6 +22,14 @@ class TransformerSearchRetrieval:
         self.data_with_embeddings.add_faiss_index(column='embeddings')
         if self.save_embeddings:
             self.data_with_embeddings.save_faiss_index('embeddings', 'my_index.faiss')
+
+        self.data_with_embeddings.drop_index('embeddings')
+        self.data_with_embeddings.save_to_disk(dataset_path="bbc_news_data")
+
+    def load_embeddings(self):
+        self.data_with_embeddings = load_from_disk("bbc_news_data")#pd.read_excel("data/news_articles.xlsx")
+        # Load the FAISS index
+        self.data_with_embeddings.load_faiss_index('embeddings', 'my_index.faiss')
 
     def dense_retrieval(self, query, top_k=100):
         """
