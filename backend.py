@@ -151,7 +151,8 @@ class SearchEngine:
         """
         response = self.hybrid_retrieval(search_term, top_k=100)
         response.rename(columns={'theme': 'topic', 'content': 'article'}, inplace=True)
-        response_dict = response[['file_index', 'topic', 'article']].to_dict('records')
-        response_extra = [d for d in response_dict]
-        return response_extra
+        response_dict = response[['topic', 'article']].to_dict('records')
+        #response_extra = [d for d in response_dict]
+        return response_dict
+
 

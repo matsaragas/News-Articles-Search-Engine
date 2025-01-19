@@ -3,7 +3,7 @@ from streamlit.runtime.scriptrunner import get_script_run_ctx
 from backend import SearchEngine
 
 
-data_path = "data/bbc"
+data_path = "data/news_articles.xlsx"
 dense_llm_model = "nli-bert-large-max-pooling"
 # Additional Data
 enrich_data_url = None
