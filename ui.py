@@ -34,7 +34,7 @@ def search_app():
 
     if query:
         # Call the search function with the user input
-        results = se.search_engine(query)
+        results = se.search_engine(query)["search_data"]
         if results:
             st.write("### Results:")
             for result in results:

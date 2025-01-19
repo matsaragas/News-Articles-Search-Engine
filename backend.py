@@ -140,7 +140,7 @@ class SearchEngine:
             entities[ent.label_].add(ent.text)
         return entities
 
-    def search_engine(self, search_term: str) -> List[Dict]:
+    def search_engine(self, search_term: str) -> Dict:
         """
         Your should include a working function implementation here, this takes in a search string and finds the most relevant articles;
         returning a list of the form given in the task introduction
@@ -151,8 +151,7 @@ class SearchEngine:
         """
         response = self.hybrid_retrieval(search_term, top_k=100)
         response.rename(columns={'theme': 'topic', 'content': 'article'}, inplace=True)
-        response_dict = response[['topic', 'article']].to_dict('records')
-        #response_extra = [d for d in response_dict]
+        response_dict = {"search_data": response[['topic', 'article']].to_dict('records')}
         return response_dict
 
 

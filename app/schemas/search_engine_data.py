@@ -10,4 +10,4 @@ class SearchEngineModel(BaseModel):
 
 
 class SearchEngineData(BaseModel):
-    search_dict: List[Dict]
+    search_dict: Dict
