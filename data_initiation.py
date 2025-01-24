@@ -2,6 +2,7 @@ from sparse_retrieval_code import ElasticSearchRetrieval
 from sentence_transformers import SentenceTransformer
 from dense_retriever_code import TransformerSearchRetrieval
 import pandas as pd
+import os
 
 
 class DataInit:
@@ -37,10 +38,12 @@ class DataInit:
 if __name__ == "__main__":
     data_path = "data/news_articles.xlsx"
     llm_model = "nli-bert-large-max-pooling"
+    embeddings_file = "my_index.faiss"
     ds = DataInit(data_path, llm_model)
     ds.load_data()
     ds.initialize_sparse_retriever()
-    ds.initialize_dense_retriever()
+    if not os.path.exists(embeddings_file):
+        ds.initialize_dense_retriever()
 
 
 
