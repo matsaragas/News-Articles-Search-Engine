@@ -96,7 +96,6 @@ class SearchEngine:
         It estimates the reciprocal rank fusion score and return the most
         relevant news articles to the provided search query.
         """
-        self.initialize_dense_retriever()
         dense_data = self.dense_retriever.dense_retrieval(query, top_k=top_k)
         sparse_data = self.initialize_sparse_retriever(query, top_k=top_k)
         if (sparse_data.shape[0] > 0) and (dense_data.shape[0] > 0):
@@ -150,6 +149,7 @@ class SearchEngine:
         :return:            list of result objects as detailed above
         """
         response = self.hybrid_retrieval(search_term, top_k=100)
+        response = response[['theme', 'content']].drop_duplicates(subset=['content'])
         response.rename(columns={'theme': 'topic', 'content': 'article'}, inplace=True)
         response_dict = {"search_data": response[['topic', 'article']].to_dict('records')}
         return response_dict
