@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.api_v1.api import api_router
 from app.core.config import settings
-
+import uvicorn
 root_router = APIRouter()
 app = FastAPI(title="Search Engine API")
 
@@ -34,6 +34,4 @@ app.include_router(root_router)
 
 if __name__ == "__main__":
     # Use this for debugging purposes only
-    import uvicorn
-
     uvicorn.run(app, host="0.0.0.0", port=8001, log_level="debug")
