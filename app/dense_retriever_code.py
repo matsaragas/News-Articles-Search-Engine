@@ -27,10 +27,10 @@ class TransformerSearchRetrieval:
         self.data_with_embeddings.save_to_disk(dataset_path="bbc_news_data")
 
     def load_embeddings(self):
-        self.data_with_embeddings = load_from_disk("bbc_news_data")
+        self.data_with_embeddings = load_from_disk("../bbc_news_data")
         # Load the FAISS index
         print('Load Embeddings....')
-        self.data_with_embeddings.load_faiss_index('embeddings', 'my_index.faiss')
+        self.data_with_embeddings.load_faiss_index('embeddings', '../data/my_index.faiss')
 
     def dense_retrieval(self, query, top_k=100):
         """
