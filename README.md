@@ -18,8 +18,9 @@ We have developed a user-friendly interface using **React** (frontend) and **Fas
 
 A high level diagram of the architecture is described below:
 
-<img src= "images/search_architecture.png" alt="Description" width="300">
-
+<div align="center">
+  <img src="images/search_architecture.png" alt="Description" width="400">
+</div>
 
 ## Searching Approach
 
