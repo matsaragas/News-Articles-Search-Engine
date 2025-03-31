@@ -1,5 +1,9 @@
 ## News Articles Search Engine
 
+In this repo, we have developed a search engine that allow users to identify news articles using search queries. 
+The Engine is capable to also `identify the most similar articles` to the ones selected by the user. Finally, the search 
+engine indicates `how novel a news article is` by comparing it to all the published articles so far.
+
 # Solution
 
 First, we load the news articles data used in `D. Greene and P. Cunningham. "Practical Solutions to the Problem of Diagonal Dominance in Kernel Document Clustering", Proc. ICML 2006` - http://mlg.ucd.ie/datasets/bbc.htmldata by running the method `download_news_articles` in the `data_loader` script. To enrich our dataset, we also incorporate the HuffingPost data, which can be found here https://www.kaggle.com/datasets/rmisra/news-category-dataset. Additionally, we could generate more data by paraphrasing the existing BBC data. However, due to time constraints, we will simply download additional news data from the web.
@@ -35,6 +39,13 @@ install the pre-built packages based on the operating systems: https://www.elast
 * Step5: Install the Spacy model `en_core_web_sm` by running the following python command on terminal: `python -m spacy download en_core_web_sm`
 
 
+
+## Generate Data
+
+To generate the data for the application:
+
+1) Run script [`data_loader.py`](data/data_loader.py) to download the [`bbc news dataset`](http://mlg.ucd.ie/datasets/bbc.html)
+2) Run Script [`data_initiation.py`](data/data_initiation.py) to load the text data into our sparse and dense retrievers.
 ## Enrich the News Data
 
 * Step1: Download additional news data from Kaggle (Huffing Post data: https://www.kaggle.com/datasets/rmisra/news-category-dataset) and place the downloaded json file in the 
