@@ -1,14 +1,27 @@
-## News Articles Search Engine
+# News Articles Search Engine
 
 In this repo, we have developed a search engine that allow users to identify news articles using search queries. 
 The Engine is capable to also `identify the most similar articles` to the ones selected by the user. Finally, the search 
-engine indicates `how novel a news article is` by comparing it to all the published articles so far.
+engine indicates `how novel a news article is` by comparing it to all the published articles so far. 
 
-# Solution
+## Solution
+A User Interfaced has been developed using 'React' that allows the users to pass queries and retrive the news articles 
+of interest. 
 
-First, we load the news articles data used in `D. Greene and P. Cunningham. "Practical Solutions to the Problem of Diagonal Dominance in Kernel Document Clustering", Proc. ICML 2006` - http://mlg.ucd.ie/datasets/bbc.htmldata by running the method `download_news_articles` in the `data_loader` script. To enrich our dataset, we also incorporate the HuffingPost data, which can be found here https://www.kaggle.com/datasets/rmisra/news-category-dataset. Additionally, we could generate more data by paraphrasing the existing BBC data. However, due to time constraints, we will simply download additional news data from the web.
+
+A high level diagram of the Architecture is described below:
+
+![Alt Text](images/search_architecture.png)
+
+
 
 ## Searching Approach
+
+### Data
+First, we load the news articles data used in `D. Greene and P. Cunningham. "Practical Solutions to the Problem of Diagonal Dominance in Kernel Document Clustering", Proc. ICML 2006` - http://mlg.ucd.ie/datasets/bbc.htmldata by running the method `download_news_articles` in the `data_loader` script. To enrich our dataset, we also incorporate the HuffingPost data, which can be found here https://www.kaggle.com/datasets/rmisra/news-category-dataset. Additionally, we could generate more data by paraphrasing the existing BBC data. However, due to time constraints, we will simply download additional news data from the web.
+
+### Searching Algorithm
+
 Our solution is based on a hybrid search approach, combining both sparse and dense retrievers. The Sparse retriever uses `ElasticSearch` to run the search query against all articles, identifying co-existing keywords and phrases between the search query and documents. The higher the number of hits (number of co-existing keywords/phrases between query and the articles), the higher the score returned by the sparse retriever, indicating that the documents are potentially relevant to the search query.
 
 The dense retriever leverages embeddings extracted by a pre-trained transformer `sentence-transformers/nli-bert-large-max-pooling` (https://huggingface.co/sentence-transformers/nli-bert-large-max-pooling). This transformer generates embeddings for both the search query and each article. By calculating the cosine similairity score between the search query embedding and the embeddings of each article, we can identify documents that are semantically similar to the search query. A higher similarity score indicates a greater likelihood that the document is relevant to the search query.
