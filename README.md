@@ -18,8 +18,7 @@ We have developed a user-friendly interface using **React** (frontend) and **Fas
 
 A high level diagram of the architecture is described below:
 
-![Alt Text](images/search_architecture.png)
-
+<img src= "images/search_architecture.png" alt="Description" width="300">
 
 
 ## Searching Approach
@@ -59,13 +58,17 @@ install the pre-built packages based on the operating systems: https://www.elast
    ``` [2024-07-17T12:12:31,856][INFO ][o.e.h.AbstractHttpServerTransport] [Pet-Pav-Mac-Air.local] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}```
 <br>
 <br>
-* Step 3: Make sure the host and port (here, `port=9200` and `host=localhost`) is configured correctly in the python script `sparse_retrieval_code.py`
+* Step 3: Make sure the host and port (here, `port=9200` and `host=localhost`) is configured correctly in  [`sparse_retrieval_code.py`](app/sparse_retrieval_code.py)
 <br>
 <br>
-* Step 4: Installed all the python package by running the following command in terminal: `pip install -r requirements.txt`  
-<br>
-<br>
-* Step5: Install the Spacy model `en_core_web_sm` by running the following python command on terminal: `python -m spacy download en_core_web_sm`
+* Step 4: Navigate to [code](app) and install all the python packages by running the following command in terminal:
+  ```sh
+  pip install -r requirements.txt  
+  ```
+* Step5: Install the Spacy model `en_core_web_sm` by running the following python command on terminal: 
+  ```sh  
+  python -m spacy download en_core_web_sm
+  ```
 
 
 
@@ -81,7 +84,7 @@ To generate the data for the application:
 
 ### Run the Backend
 
-Navigate to the ['app'](app) directory and start the backend by running: 
+Navigate to the [app](app) directory and start the backend by running: 
 
 ```sh
 python main_app.py
@@ -89,7 +92,7 @@ python main_app.py
 
 ### Run the Front End App
 
-Navigate to the ['frontend'](frontend) directory and run the following commands:
+Navigate to the [frontend](frontend) directory and run the following commands:
 
 1. Install the dependencies (in not already installed):
 ```shel 

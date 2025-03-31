@@ -8,6 +8,7 @@ from string import punctuation
 spacy.load('en_core_web_sm')
 STOP_WORDS = spacy.lang.en.stop_words.STOP_WORDS
 
+
 class ElasticSearchRetrieval:
     def __init__(self, host, port=9200, scheme="http"):
         self.host = host
@@ -24,8 +25,8 @@ class ElasticSearchRetrieval:
         return self.client.indices.get_mapping()
 
     def index_exists(self, index):
-        indices = self.available_indices( )
-        if (index in indices):
+        indices = self.available_indices()
+        if index in indices:
             return True
         else:
             return False
@@ -83,13 +84,13 @@ class ElasticSearchRetrieval:
         """
         conditionals = []
         for k, v in match_dictionary.items():
-            if (filter_stop_words):
+            if filter_stop_words:
                 v = self.remove_stop_words(v)
 
             clause = {"match": {k: v}}
             conditionals.append(clause)
 
-        if (filter_dictionary is not None):
+        if filter_dictionary is not None:
             for k, v in filter_dictionary.items():
                 clause = {"match_phrase": {k: v}}
                 conditionals.append(clause)
