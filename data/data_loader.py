@@ -49,7 +49,7 @@ class DataLoader:
         self.data = pd.DataFrame(text_data)
         self.data['file_index'] = self.data.index
         if save:
-            self.data.to_excel('data/news_articles.xlsx')
+            self.data.to_excel('news_articles.xlsx')
 
 
     @staticmethod
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     # Additional Data
     enrich_data_url = None
     extract_dir = "data"
-    bbc_file = "data/news_articles.xlsx"
+    bbc_file = "news_articles.xlsx"
     ds = DataLoader(data_url, enrich_data_url, data_path, extract_dir)
     if not os.path.exists(bbc_file):
         ds.download_news_articles()

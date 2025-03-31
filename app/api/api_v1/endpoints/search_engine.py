@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Query, HTTPException
 from pydantic import ValidationError
-from backend import SearchEngine
+from app.backend import SearchEngine
 import uuid
 
 from app.schemas.search_engine_data import SearchEngineModel, SearchEngineData
@@ -8,7 +8,7 @@ from app.schemas.search_engine_data import SearchEngineModel, SearchEngineData
 
 api_router = APIRouter()
 
-data_path = "data/news_articles.xlsx"
+data_path = "../data/news_articles.xlsx"
 dense_llm_model = "nli-bert-large-max-pooling"
 # Additional Data
 enrich_data_url = None

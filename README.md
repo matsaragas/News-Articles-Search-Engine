@@ -50,3 +50,12 @@ To generate the data for the application:
 
 * Step1: Download additional news data from Kaggle (Huffing Post data: https://www.kaggle.com/datasets/rmisra/news-category-dataset) and place the downloaded json file in the 
 data folder that is created when we download the bbc news
+  
+
+
+## Run the Front End App
+
+Go to the ['frontend'](frontend) directory and run the following commands:
+
+* If you haven't installed dependencies yet, run: `npm install`
+* To start the Development Server: Run `npm run dev`
