@@ -44,7 +44,7 @@ The dense retriever leverages embeddings extracted by a pre-trained transformer 
 
 The ranking results from the sparse and dense retriever are combined using the `Reciprocal Rank Fusion (RRF)` score. RRF ranks each article based on its position in both the sparse and dense retrieval rankings and then merges these rankings to produce a unified result list. The RRF score is calculated by summing the inverse rankings from each list, effectively integrating both retrieval approaches to enhance the relevance of the final results.
 
-### Install packages
+## Install packages
 
 Python 3.11.8 was used to develop the search engine. Please follow the next steps to run the search approach:
 * Step 1: Install ElasticSearch on you local machine. Download and 
@@ -69,7 +69,7 @@ install the pre-built packages based on the operating systems: https://www.elast
 
 
 
-### Generate Data
+## Generate Data
 
 To generate the data for the application:
 
@@ -77,9 +77,9 @@ To generate the data for the application:
 2) Run Script [`data_initiation.py`](data/data_initiation.py) to load the text data into our sparse and dense retrievers.
 
 
-### Run the Application
+## Run the Application
 
-#### Run the Backend
+### Run the Backend
 
 Navigate to the ['app'](app) directory and start the backend by running: 
 
