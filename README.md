@@ -44,9 +44,9 @@ The dense retriever leverages embeddings extracted by a pre-trained transformer 
 
 The ranking results from the sparse and dense retriever are combined using the `Reciprocal Rank Fusion (RRF)` score. RRF ranks each article based on its position in both the sparse and dense retrieval rankings and then merges these rankings to produce a unified result list. The RRF score is calculated by summing the inverse rankings from each list, effectively integrating both retrieval approaches to enhance the relevance of the final results.
 
-## Install packages
+### Install packages
 
-Python 3.8.8 was used to develop the search engine. Please follow the next steps to run the search approach:
+Python 3.11.8 was used to develop the search engine. Please follow the next steps to run the search approach:
 * Step 1: Install ElasticSearch on you local machine. Download and 
 install the pre-built packages based on the operating systems: https://www.elastic.co/downloads/past-releases/elasticsearch-7-17-9 
 <br>
@@ -69,22 +69,36 @@ install the pre-built packages based on the operating systems: https://www.elast
 
 
 
-## Generate Data
+### Generate Data
 
 To generate the data for the application:
 
 1) Run script [`data_loader.py`](data/data_loader.py) to download the [`bbc news dataset`](http://mlg.ucd.ie/datasets/bbc.html)
 2) Run Script [`data_initiation.py`](data/data_initiation.py) to load the text data into our sparse and dense retrievers.
-## Enrich the News Data
-
-* Step1: Download additional news data from Kaggle (Huffing Post data: https://www.kaggle.com/datasets/rmisra/news-category-dataset) and place the downloaded json file in the 
-data folder that is created when we download the bbc news
-  
 
 
-## Run the Front End App
+### Run the Application
 
-Go to the ['frontend'](frontend) directory and run the following commands:
+#### Run the Backend
 
-* If you haven't installed dependencies yet, run: `npm install`
-* To start the Development Server: Run `npm run dev`
+Navigate to the ['app'](app) directory and start the backend by running: 
+
+```sh
+python main_app.py
+```
+
+### Run the Front End App
+
+Navigate to the ['frontend'](frontend) directory and run the following commands:
+
+1. Install the dependencies (in not already installed):
+```shel 
+npm install
+```
+
+
+2. Start the Development Server:
+
+```sh   
+npm run dev
+```
